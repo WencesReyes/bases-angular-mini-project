@@ -1,6 +1,10 @@
 {
   "name": "02-bases",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=20.19.5",
+    "pnpm": ">=10.18.2"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
