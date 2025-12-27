@@ -17,8 +17,6 @@ const getCharactersFromLocalStorage = (): Character[] => {
   const charactersLocalStorage = localStorage.getItem('characters');
   const characters = charactersLocalStorage ? JSON.parse(charactersLocalStorage) : [];
 
-  console.log({ characters });
-
   if (isCharacterArray(characters)) {
     return characters;
   }
