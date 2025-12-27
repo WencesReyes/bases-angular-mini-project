@@ -1,0 +1,19 @@
+<input
+  #txtName
+  type="text"
+  name="nombre"
+  class="form-control"
+  placeholder="Nombre"
+  [value]="characterForm().name"
+  (input)="updateName(txtName.value)"
+/>
+<input
+  #txtPower
+  type="number"
+  name="poder"
+  class="form-control mt-2"
+  placeholder="Poder"
+  [value]="characterForm().power"
+  (input)="updatePower(+txtPower.value)"
+/>
+<button class="mt-2 btn btn-primary" (click)="addCharacter()">Agregar</button>

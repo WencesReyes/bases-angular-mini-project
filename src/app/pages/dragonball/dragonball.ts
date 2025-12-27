@@ -1,44 +1,13 @@
-import { Component, signal } from '@angular/core';
-import { Character } from '../../models/character';
-import { CharacterForm } from '../../models/character-form';
+import { Component, inject } from '@angular/core';
+import { CharacterList } from '../../components/character-list/character-list';
+import { DragonballCharacterAdd } from '../../components/dragonball-character-add/dragonball-character-add';
+import { DragonballService } from '../../services/dragonball.service';
 
 @Component({
   selector: 'app-dragonball',
-  imports: [],
+  imports: [CharacterList, DragonballCharacterAdd],
   templateUrl: './dragonball.html',
 })
 export class Dragonball {
-  protected characterForm = signal<CharacterForm>({
-    name: '',
-    power: 0,
-  });
-
-  protected characters = signal<Character[]>([{ id: 1, name: 'Goku', power: 15000 }]);
-
-  updateName(newName: string) {
-    this.characterForm.update((state) => ({ ...state, name: newName }));
-  }
-
-  updatePower(newPower: number) {
-    this.characterForm.update((state) => ({ ...state, power: newPower }));
-  }
-
-  addCharacter() {
-    if (!!this.characterForm().name && this.characterForm().power > 0) {
-      const newCharacter: Character = {
-        id: new Date().getTime(),
-        name: this.characterForm().name,
-        power: this.characterForm().power,
-      };
-      this.characters.update((state) => [...state, newCharacter]);
-      this.resetForm();
-    }
-  }
-
-  resetForm() {
-    this.characterForm.set({
-      name: '',
-      power: 0,
-    });
-  }
+  protected dragonballService = inject(DragonballService);
 }

@@ -4,43 +4,13 @@
 
 <section class="row">
   <div class="col-md-6 col-sm-12">
-    <input
-      #txtName
-      type="text"
-      name="nombre"
-      class="form-control"
-      placeholder="Nombre"
-      [value]="characterForm().name"
-      (input)="updateName(txtName.value)"
-    />
-    <input
-      #txtPower
-      type="number"
-      name="poder"
-      class="form-control mt-2"
-      placeholder="Poder"
-      [value]="characterForm().power"
-      (input)="updatePower(+txtPower.value)"
-    />
-    <button class="mt-2 btn btn-primary" (click)="addCharacter()">Agregar</button>
+    <app-dragonball-character-add (characterAdded)="dragonballService.addCharacter($event)" />
   </div>
 
   <div class="col-md-6 col-sm-12">
-    <h3>Listado fuertes</h3>
-    <ul class="list-unstyled">
-      @for (character of characters(); track character.id; let i = $index) {
-        @if (character.power > 4000) {
-          <li>
-            <span>{{ i + 1 }} - {{ character.name }}</span>
-            <strong
-              [class.text-danger]="character.power >= 9000"
-              [class.text-primary]="character.power < 9000"
-            >
-              ({{ character.power }})</strong
-            >
-          </li>
-        }
-      }
-    </ul>
+    <app-character-list
+      listName="Listado de personajes"
+      [characters]="dragonballService.characterList()"
+    ></app-character-list>
   </div>
 </section>

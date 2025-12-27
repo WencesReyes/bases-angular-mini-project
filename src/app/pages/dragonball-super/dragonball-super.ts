@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { Character } from '../../models/character';
-import { CharacterForm } from '../../models/character-form';
+import type { Character } from '../../models/character';
+import type { CharacterForm } from '../../models/character-form';
 
 @Component({
   selector: 'app-dragonball',
