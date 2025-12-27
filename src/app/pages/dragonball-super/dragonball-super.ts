@@ -5,15 +5,15 @@ import { CharacterForm } from '../../models/character-form';
 @Component({
   selector: 'app-dragonball',
   imports: [],
-  templateUrl: './dragonball.html',
+  templateUrl: './dragonball-super.html',
 })
-export class Dragonball {
+export class DragonballSuper {
   protected characterForm = signal<CharacterForm>({
     name: '',
     power: 0,
   });
 
-  protected characters = signal<Character[]>([{ id: 1, name: 'Goku', power: 15000 }]);
+  protected characters = signal<Character[]>([{ id: 3, name: 'Gohan', power: 8000 }]);
 
   updateName(newName: string) {
     this.characterForm.update((state) => ({ ...state, name: newName }));
